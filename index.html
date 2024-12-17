@@ -96,10 +96,19 @@
   </head>
     
   <script>
-  
-  setTimeout(() => {
-    window.location.href = process.env.NEXT_PUBLIC_URL || "https://roan-wrinkle-804.notion.site/IGLESIA-EVANG-LICA-PUEBLO-ELEGIDO-156170527d7c803e84bec81931515abb";
-  }, 5000);
+  (function () {
+    // Obtener la URL desde las variables de entorno
+    const redirectUrl = '<%= process.env.NEXT_PUBLIC_URL %>';
+
+    // Validar que la URL sea válida y segura
+    if (redirectUrl && redirectUrl.startsWith('https://')) {
+      setTimeout(() => {
+        window.location.href = redirectUrl;
+      }, 1000);
+    } else {
+      console.error('URL de redirección no válida o no definida.');
+    }
+  })();
 
   </script>
 </body>
